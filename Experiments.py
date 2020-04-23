@@ -16,9 +16,15 @@ class Exp1(Experiment):
         Experiment.__init__(self, size)
 
     def no_message_attack(self):
-        experiment_S = getPrime(self.size)
-        experiment_M = pow(experiment_S, self.e, self.n)
-        return(experiment_S, experiment_M)
+        self.experiment_S = getPrime(self.size)
+        self.experiment_M = pow(self.experiment_S, self.e, self.n)
+        return(self.experiment_S, self.experiment_M)
+
+    def validation(self):
+        decrypt = pow(self.experiment_S, self.e, self.n)
+        if self.experiment_M != decrypt:
+            return False
+        return True
 
 
 class Exp2(Experiment):

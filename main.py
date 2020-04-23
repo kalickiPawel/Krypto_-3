@@ -15,10 +15,13 @@ print('poczatkowa wiadomosc: {}'.format(message))
 print('zaszyfrowany int tekstu: {}'.format(encrypted_text))
 print('odszyfrowana wiadomosc: {}'.format(decrypted_text))
 
+print('----Experyment 1----')
 objExp1 = Exp1(securityLength)
 (s, m) = objExp1.no_message_attack()
-print("To jest s: {}".format(s))
-print("To jest m: {}".format(m))
+print("Wygenerowany klucz: {}".format(s))
+print("Treść szyfrogramu: {}".format(m))
+print("Czy poprawne szyfrowanie?: {}".format(
+    'Tak' if objExp1.validation() else 'Nie'))
 
 # objExp2 = Exp2(securityLength)
 # objExp3 = Exp3(securityLength)
