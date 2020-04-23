@@ -9,8 +9,8 @@ class Experiment(PlainRSA):
 
 class Exp1(Experiment):
     # Eksperyment 1 - No - message attack
-    # wygeneruj losowy podpis s i oblicz m = s^emod  N.
-    # Nawyjściuotrzymasz parę podpis, wiadomość (s,  m)
+    # wygeneruj losowy podpis s i oblicz m = s ^ e mod N.
+    # Na wyjściu otrzymasz parę podpis, wiadomość (s,  m)
     # wygenerowaną pomimo braku użycia klucza prywatnego.
     def __init__(self, size):
         Experiment.__init__(self, size)

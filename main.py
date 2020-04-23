@@ -18,8 +18,8 @@ print('odszyfrowana wiadomosc: {}'.format(decrypted_text))
 print('----Experyment 1----')
 objExp1 = Exp1(securityLength)
 (s, m) = objExp1.no_message_attack()
-print("Wygenerowany klucz: {}".format(s))
-print("Treść szyfrogramu: {}".format(m))
+print("Wygenerowany podpis: {}".format(s))
+print("Treść szyfrogramu wiadomości: {}".format(m))
 print("Czy poprawne szyfrowanie?: {}".format(
     'Tak' if objExp1.validation() else 'Nie'))
 
