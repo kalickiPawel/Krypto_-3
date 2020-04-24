@@ -40,7 +40,7 @@ class PlainRSA():
         return text_int
 
     def encryptMessage(self, m):
-        return pow(m, self.e, self.n)
+        return pow(m, self.d, self.n)
 
     def decryptMessage(self, c):
-        return binascii.unhexlify(hex(pow(c, self.d, self.n))[2:]).decode()
+        return binascii.unhexlify(hex(pow(c, self.e, self.n))[2:]).decode()
