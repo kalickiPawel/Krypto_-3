@@ -14,7 +14,7 @@ class Exp1(Experiment):
     """
 
     def __init__(self, size):
-        Experiment.__init__(self, size)
+        super().__init__(size)
         logger.info('>---Start the Experiment 1--<\n')
 
     def no_message_attack(self):

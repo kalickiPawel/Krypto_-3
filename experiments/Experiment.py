@@ -8,11 +8,11 @@ logger = logging.getLogger(__name__)
 
 class Experiment(PlainRSA):
     def __init__(self, size):
-        PlainRSA.__init__(self, size)
+        super().__init__(size)
 
     def validation(self, s, m):
         logger.warn("Start validation")
-        decrypt = pow(s, self.e, self.n)
+        decrypt = pow(s, self.d, self.n)
         if m != decrypt:
             return False
         return True

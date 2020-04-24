@@ -14,7 +14,7 @@ class Exp2(Experiment):
     """
 
     def __init__(self, size, m1, m2):
-        Experiment.__init__(self, size)
+        super().__init__(size)
         logger.info('>---Start the Experiment 2--<\n')
 
         self.m1 = self.generate_int(m1)
