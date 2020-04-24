@@ -30,7 +30,7 @@ class Exp2(Experiment):
         return self.s_exp2
 
     def realise_multiply_mod(self, a, b):
-        return a * b % self.n
+        return (a * b) % self.n
 
     def validation(self):
         return super().validation(self.s_exp2, self.m_exp2)

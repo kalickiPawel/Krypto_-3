@@ -26,7 +26,7 @@ message1 = "Za oknem pada deszcz"
 message2 = "Moj tajny tekst."
 objExp2 = Exp2(securityLength, message1, message2)
 s = objExp2.make_experiment()
-print('\nWygenerowany podpis: {}'.format(s))
+print('Wygenerowany podpis: {}'.format(s))
 print('Czy poprawne szyfrowanie?: {}\n'.format(
     'Tak' if objExp2.validation() else 'Nie'))
 
