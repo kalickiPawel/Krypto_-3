@@ -11,7 +11,7 @@ class Experiment(PlainRSA):
         PlainRSA.__init__(self, size)
 
     def validation(self, s, m):
-        logger.info("Validating")
+        logger.warn("Start validation")
         decrypt = pow(s, self.e, self.n)
         if m != decrypt:
             return False
