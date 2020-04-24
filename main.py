@@ -1,5 +1,5 @@
-from PlainRSA import PlainRSA
-from Experiments import Exp1, Exp2, Exp3, Exp4
+from rsa_modules import PlainRSA
+from experiments import Exp1, Exp2, Exp3, Exp4
 
 securityLength = 128
 objRSA = PlainRSA(securityLength)
