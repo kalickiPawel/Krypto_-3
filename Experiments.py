@@ -9,6 +9,7 @@ class Experiment(PlainRSA):
         PlainRSA.__init__(self, size)
 
     def validation(self, s, m):
+        logger.info("Validating")
         decrypt = pow(s, self.e, self.n)
         if m != decrypt:
             return False
@@ -16,10 +17,12 @@ class Experiment(PlainRSA):
 
 
 class Exp1(Experiment):
-    # Eksperyment 1 - No - message attack
-    # wygeneruj losowy podpis s i oblicz m = s ^ e mod N.
-    # Na wyjściu otrzymasz parę podpis, wiadomość (s,  m)
-    # wygenerowaną pomimo braku użycia klucza prywatnego.
+    """ Eksperyment 1 - No - message attack
+        wygeneruj losowy podpis s i oblicz m = s ^ e mod N.
+        Na wyjściu otrzymasz parę podpis, wiadomość (s,  m)
+        wygenerowaną pomimo braku użycia klucza prywatnego.
+    """
+
     def __init__(self, size):
         Experiment.__init__(self, size)
         logger.info('\n>---Start the Experiment 1--<\n')
@@ -34,6 +37,12 @@ class Exp1(Experiment):
 
 
 class Exp2(Experiment):
+    """ Eksperyment 2 - Adwersarz wybiera dwie wiadomość m1, m2
+        - takie, że m = m1 * m2 mod N. Następnie uzyskuje podpisy 
+        dla wiadomości m1, m2 odpowiednio s1 i s2. 
+        Adwersarz oblicza podpis dla m jako s = s1 * s2 mod N.
+    """
+
     def __init__(self, size, m1, m2):
         Experiment.__init__(self, size)
         logger.info('\n>---Start the Experiment 2--<\n')
