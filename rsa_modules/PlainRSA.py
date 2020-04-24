@@ -29,16 +29,18 @@ class PlainRSA():
         else:
             return x % m
 
-    def encryptMessage(self, m):
+    def generate_int(self, m):
         hex_data = binascii.hexlify(m.encode())
-        plain_text = int(hex_data, 16)
+        text_int = int(hex_data, 16)
+        logger.info('Wiadomosc: {}'.format(m))
         logger.info('dane w hex: {}'.format(hex_data))
-        logger.info('int tekst: {}'.format(plain_text))
-        if plain_text > self.n:
+        logger.info('dane w int: {}\n'.format(text_int))
+        if text_int > self.n:
             raise Exception('tekst za duzy dla klucza')
-        return pow(plain_text, self.e, self.n)
+        return text_int
+
+    def encryptMessage(self, m):
+        return pow(m, self.e, self.n)
 
     def decryptMessage(self, c):
-        logger.info('rozszyfrowany int tekst: {}'.format(
-            pow(c, self.d, self.n)))
         return binascii.unhexlify(hex(pow(c, self.d, self.n))[2:]).decode()

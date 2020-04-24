@@ -5,11 +5,12 @@ securityLength = 128
 objRSA = PlainRSA(securityLength)
 
 message = 'Hello Bob!'
-encrypted_text = objRSA.encryptMessage(message)
+int_text = objRSA.generate_int(message)
+encrypted_text = objRSA.encryptMessage(int_text)
 decrypted_text = objRSA.decryptMessage(encrypted_text)
 
-print('\nKlucz publiczny: {}'.format(objRSA.e))
-print('Klucz prywatny: {}'.format(objRSA.d))
+print('Klucz publiczny: {}'.format(objRSA.e))
+print('Klucz prywatny: {}\n'.format(objRSA.d))
 print('poczatkowa wiadomosc: {}'.format(message))
 print('zaszyfrowany int tekstu: {}'.format(encrypted_text))
 print('odszyfrowana wiadomosc: {}\n'.format(decrypted_text))
