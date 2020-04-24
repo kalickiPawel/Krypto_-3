@@ -23,4 +23,4 @@ class Exp1(Experiment):
         return(self.s_exp1, self.m_exp1)
 
     def validation(self):
-        super().validation(self.s_exp1, self.m_exp1)
+        return super().validation(self.s_exp1, self.m_exp1)

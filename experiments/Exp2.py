@@ -41,4 +41,4 @@ class Exp2(Experiment):
         return a * b % self.n
 
     def validation(self):
-        super().validation(self.s_exp2, self.m_exp2)
+        return super().validation(self.s_exp2, self.m_exp2)
