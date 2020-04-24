@@ -1,7 +1,9 @@
 from PlainRSA import PlainRSA
 from Crypto.Util.number import getPrime
 import binascii
-from logger import logger
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class Experiment(PlainRSA):

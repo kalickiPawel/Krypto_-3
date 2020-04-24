@@ -1,6 +1,5 @@
 from PlainRSA import PlainRSA
 from Experiments import Exp1, Exp2, Exp3, Exp4
-import logger
 
 securityLength = 128
 objRSA = PlainRSA(securityLength)
