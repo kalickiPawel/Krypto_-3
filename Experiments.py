@@ -1,10 +1,18 @@
 from PlainRSA import PlainRSA
 from Crypto.Util.number import getPrime
+import binascii
+from logger import logger
 
 
 class Experiment(PlainRSA):
     def __init__(self, size):
         PlainRSA.__init__(self, size)
+
+    def validation(self, s, m):
+        decrypt = pow(s, self.e, self.n)
+        if m != decrypt:
+            return False
+        return True
 
 
 class Exp1(Experiment):
@@ -14,21 +22,47 @@ class Exp1(Experiment):
     # wygenerowaną pomimo braku użycia klucza prywatnego.
     def __init__(self, size):
         Experiment.__init__(self, size)
+        logger.info('\n>---Start the Experiment 1--<\n')
 
     def no_message_attack(self):
-        self.experiment_S = getPrime(self.size)
-        self.experiment_M = pow(self.experiment_S, self.e, self.n)
-        return(self.experiment_S, self.experiment_M)
+        self.s_exp1 = getPrime(self.size)
+        self.m_exp1 = pow(self.s_exp1, self.e, self.n)
+        return(self.s_exp1, self.m_exp1)
 
     def validation(self):
-        decrypt = pow(self.experiment_S, self.e, self.n)
-        if self.experiment_M != decrypt:
-            return False
-        return True
+        super().validation(self.s_exp1, self.m_exp1)
 
 
 class Exp2(Experiment):
-    pass
+    def __init__(self, size, m1, m2):
+        Experiment.__init__(self, size)
+        logger.info('\n>---Start the Experiment 2--<\n')
+
+        self.m1 = self.generate_text(m1)
+        self.m2 = self.generate_text(m2)
+
+        self.s1 = pow(self.m1, self.e, self.n)
+        self.s2 = pow(self.m2, self.e, self.n)
+
+        self.m_exp2 = self.realise_multiply_mod(self.m1, self.m2)
+        self.s_exp2 = self.realise_multiply_mod(self.s1, self.s2)
+
+    def generate_text(self, m):
+        hex_data = binascii.hexlify(m.encode())
+        plain_text = int(hex_data, 16)
+        logger.info('Wiadomosc: {}'.format(m))
+        logger.info('dane w hex: {}'.format(hex_data))
+        logger.info('int tekst: {}'.format(plain_text))
+        return plain_text
+
+    def make_experiment(self):
+        return self.s_exp2
+
+    def realise_multiply_mod(self, a, b):
+        return a * b % self.n
+
+    def validation(self):
+        super().validation(self.s_exp2, self.m_exp2)
 
 
 class Exp3(Experiment):
