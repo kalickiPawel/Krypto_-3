@@ -15,11 +15,11 @@ class Exp1(Experiment):
 
     def __init__(self, size):
         Experiment.__init__(self, size)
-        logger.info('\n>---Start the Experiment 1--<\n')
+        logger.info('>---Start the Experiment 1--<\n')
 
     def no_message_attack(self):
         self.s_exp1 = getPrime(self.size)
-        self.m_exp1 = pow(self.s_exp1, self.e, self.n)
+        self.m_exp1 = self.encryptMessage(self.s_exp1)
         return(self.s_exp1, self.m_exp1)
 
     def validation(self):
