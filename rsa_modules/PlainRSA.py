@@ -39,8 +39,11 @@ class PlainRSA():
             raise Exception('tekst za duzy dla klucza')
         return text_int
 
+    def generate_txt(self, c):
+        return binascii.unhexlify(hex(c)[2:]).decode()
+
     def encryptMessage(self, m):
         return pow(m, self.d, self.n)
 
     def decryptMessage(self, c):
-        return binascii.unhexlify(hex(pow(c, self.e, self.n))[2:]).decode()
+        return pow(c, self.e, self.n)
