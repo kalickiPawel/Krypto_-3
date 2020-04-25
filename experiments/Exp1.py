@@ -19,7 +19,7 @@ class Exp1(Experiment):
 
     def no_message_attack(self):
         self.s_exp1 = getPrime(self.size)
-        self.m_exp1 = self.encryptMessage(self.s_exp1)
+        self.m_exp1 = pow(self.s_exp1, self.e, self.n)
         return(self.s_exp1, self.m_exp1)
 
     def validation(self):

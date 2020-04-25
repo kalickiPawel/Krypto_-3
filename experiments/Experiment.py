@@ -12,7 +12,7 @@ class Experiment(PlainRSA):
 
     def validation(self, s, m):
         logger.warn("Start validation")
-        decrypt = pow(s, self.d, self.n)
+        decrypt = self.decryptMessage(s)
         if m != decrypt:
             return False
         return True
