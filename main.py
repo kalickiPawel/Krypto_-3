@@ -33,5 +33,5 @@ print('Wygenerowany podpis: {}'.format(s))
 print('Czy poprawne szyfrowanie?: {}\n'.format(
     'Tak' if objExp2.validation() else 'Nie'))
 
-# objExp3 = Exp3(securityLength)
+objExp3 = Exp3(securityLength)
 # objExp4 = Exp4(securityLength)
