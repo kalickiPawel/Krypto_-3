@@ -1,5 +1,5 @@
-from Crypto.Util.number import getPrime
 from experiments import Experiment
+from random import randint
 import logging
 
 
@@ -7,10 +7,8 @@ logger = logging.getLogger(__name__)
 
 
 class Exp1(Experiment):
-    """ Eksperyment 1 - No - message attack
-        wygeneruj losowy podpis s i oblicz m = s ^ e mod N.
-        Na wyjściu otrzymasz parę podpis, wiadomość (s,  m)
-        wygenerowaną pomimo braku użycia klucza prywatnego.
+    """ 
+    Eksperyment 1 - No - message attack
     """
 
     def __init__(self, size):
@@ -18,7 +16,7 @@ class Exp1(Experiment):
         logger.info('>---Start the Experiment 1--<\n')
 
     def no_message_attack(self):
-        self.s_exp1 = getPrime(self.size)
+        self.s_exp1 = randint(10**(self.size-1), (10**self.size)-1)
         self.m_exp1 = pow(self.s_exp1, self.e, self.n)
         return(self.s_exp1, self.m_exp1)
 
