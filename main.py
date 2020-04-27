@@ -34,5 +34,8 @@ print('Czy poprawne szyfrowanie?: {}\n'.format(
     'Tak' if objExp2.validation() else 'Nie'))
 
 objExp3 = Exp3(securityLength)
-print('Odczytana wiadomość to: {}'.format(objExp3.make_experiment()))
-# objExp4 = Exp4(securityLength)
+print('Odczytana wiadomość to: {}\n'.format(objExp3.make_experiment()))
+
+message = "Przykladowy tekst Håstad"
+objExp4 = Exp4(securityLength, message)
+print('Odczytana wiadomosc: {}'.format(objExp4.make_experiment()))
