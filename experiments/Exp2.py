@@ -7,10 +7,8 @@ logger = logging.getLogger(__name__)
 
 
 class Exp2(Experiment):
-    """ Eksperyment 2 - Adwersarz wybiera dwie wiadomość m1, m2
-        - takie, że m = m1 * m2 mod N. Następnie uzyskuje podpisy 
-        dla wiadomości m1, m2 odpowiednio s1 i s2. 
-        Adwersarz oblicza podpis dla m jako s = s1 * s2 mod N.
+    """ 
+    Eksperyment 2 - Uzyskanie klucza dla m = m1*m2 mod N.
     """
 
     def __init__(self, size, m1, m2):
