@@ -11,7 +11,8 @@ class PlainRSA():
         self.size = size
         p, q = getPrime(size), getPrime(size)
         phi = (p-1)*(q-1)
-        self.n, self.e, self.d = p*q, 65537, self.modinv(self.e, phi)
+        self.n, self.e = p*q, 65537
+        self.d = self.modinv(self.e, phi)
 
     def egcd(self, a, b):
         if a == 0:
