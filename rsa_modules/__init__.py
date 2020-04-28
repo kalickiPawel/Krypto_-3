@@ -1,2 +1,2 @@
-from rsa_modules.PlainRSA import PlainRSA
-from rsa_modules.FdhRSA import FdhRSA
+from .PlainRSA import PlainRSA
+from .FdhRSA import FdhRSA
