@@ -10,5 +10,5 @@ class Experiment(PlainRSA):
 
     def validation(self, c, m) -> bool:
         logger.warn("Start validation")
-        decrypt = self.decryptMessage(s)
+        decrypt = self.decrypt_message(c)
         return m == decrypt
