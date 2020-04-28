@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 class Exp1(Experiment):
     """ 
-    Eksperyment 1 - No - message attack
+    Experiment 1 - No - message attack
     """
 
     def __init__(self, size):

@@ -8,9 +8,9 @@ logger = logging.getLogger(__name__)
 
 class FdhRSA(PlainRSA):
     """
-    Ulepszony schemat PlainRSA do wersji z załącznikiem (RSA-FDH), 
-    tj. algorytm ten używa funkcji skrótu (podpisywany (szyfrowany) 
-    kluczem prywatnym jest skrót z wiadomości a nie sama wiadomość).
+    Improved PlainRSA scheme to the version with attachment (RSA-FDH),
+    i.e. this algorithm uses a hash function (signed (encrypted) the
+    private key is the message shortcut, not the message itself.)
     """
 
     def __init__(self, size):

@@ -8,8 +8,8 @@ logger = logging.getLogger(__name__)
 
 class PlainRSA():
     """
-    Implementacja podstawowego algorytmu podpisu RSA (Plain RSA), 
-    tj. bez użycia funkcji skrótu.
+    Implementation of the basic RSA signature algorithm (Plain RSA),
+    i.e. without using the hash function.
     """
 
     def __init__(self, size):

@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 class Exp4(Experiment):
     """ 
-    Eksperyment 4 - Håstad's broadcast attack. 
+    Experiment 4 - Håstad's broadcast attack.
     """
 
     def __init__(self, size, message):

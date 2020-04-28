@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 class Exp3(Experiment):
     """ 
-    Eksperyment 3 - Atak na szyfrowanie z wykorzystaniem RSA.
+    Experiment 3 - Attack on encryption using RSA.
     """
 
     def __init__(self, size):

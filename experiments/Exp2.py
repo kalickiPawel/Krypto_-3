@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 class Exp2(Experiment):
     """ 
-    Eksperyment 2 - Uzyskanie klucza dla m = m1*m2 mod N.
+    Experiment 2 - Obtaining the key for m = m1*m2 mod N.
     """
 
     def __init__(self, size, m1, m2):
