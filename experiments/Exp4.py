@@ -35,7 +35,7 @@ class Exp4(Experiment):
     def make_experiment(self):
         result = self.chinese_remainder(self.n, self.a)
         result_hex = self.nth_root(result, 3)
-        logger.warn("Otrzymany hex: {}".format(result_hex))
+        logger.warn("Received hex: {}".format(result_hex))
         return self.generate_txt(result_hex)
 
     @staticmethod

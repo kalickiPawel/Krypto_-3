@@ -36,11 +36,11 @@ class PlainRSA:
     def generate_int(self, m):
         hex_data = binascii.hexlify(m.encode())
         text_int = int(hex_data, 16)
-        logger.info('Wiadomosc: {}'.format(m))
-        logger.info('dane w hex: {}'.format(hex_data))
-        logger.info('dane w int: {}\n'.format(text_int))
+        logger.info('Message: {}'.format(m))
+        logger.info('Data in hex: {}'.format(hex_data))
+        logger.info('Data in int: {}\n'.format(text_int))
         if text_int > self.n:
-            raise Exception('tekst za duzy dla klucza')
+            raise Exception('Text is too big for key')
         return text_int
 
     @staticmethod
