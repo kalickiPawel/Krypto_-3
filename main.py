@@ -1,4 +1,4 @@
-from rsa_modules import PlainRSA
+from rsa_modules import PlainRSA, FdhRSA
 from experiments import Exp1, Exp2, Exp3, Exp4
 
 securityLength = 128
@@ -40,6 +40,9 @@ message = "Przykladowy tekst Håstad"
 obj_exp_4 = Exp4(securityLength, message)
 print('Odczytana wiadomosc: {}'.format(obj_exp_4.make_experiment()))
 
-message = "To jest test dla FDH-RSA"
+message = "To jest test dla FDH RSA"
 obj_fdh_rsa = FdhRSA(securityLength)
-print(obj_fdh_rsa.encrypt_message(message))
+cipher = obj_fdh_rsa.encrypt_message(message)
+print(obj_fdh_rsa.generate_int(message))
+print(cipher)
+print(obj_fdh_rsa.decrypt_message(cipher))
