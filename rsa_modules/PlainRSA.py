@@ -1,12 +1,12 @@
 from Crypto.Util.number import getPrime
+from logger import logger_setup
 import binascii
-from logger import logger
 import logging
 
 logger = logging.getLogger(__name__)
 
 
-class PlainRSA():
+class PlainRSA:
     """
     Implementation of the basic RSA signature algorithm (Plain RSA),
     i.e. without using the hash function.
@@ -15,19 +15,19 @@ class PlainRSA():
     def __init__(self, size):
         self.size = size
         p, q = getPrime(size), getPrime(size)
-        phi = (p-1)*(q-1)
-        self.n, self.e = p*q, 65537
-        self.d = self.modinv(self.e, phi)
+        phi = (p - 1) * (q - 1)
+        self.n, self.e = p * q, 65537
+        self.d = self.mod_inv(self.e, phi)
 
-    def egcd(self, a, b):
+    def euclidean_algorithm(self, a, b):
         if a == 0:
-            return (b, 0, 1)
+            return b, 0, 1
         else:
-            g, y, x = self.egcd(b % a, a)
-            return (g, x - (b // a) * y, y)
+            g, y, x = self.euclidean_algorithm(b % a, a)
+            return g, x - (b // a) * y, y
 
-    def modinv(self, a, m):
-        g, x, y = self.egcd(a, m)
+    def mod_inv(self, a, m):
+        g, x, y = self.euclidean_algorithm(a, m)
         if g != 1:
             raise Exception('modular inverse does not exist')
         else:
@@ -43,11 +43,12 @@ class PlainRSA():
             raise Exception('tekst za duzy dla klucza')
         return text_int
 
-    def generate_txt(self, c):
+    @staticmethod
+    def generate_txt(c):
         return binascii.unhexlify(hex(c)[2:]).decode()
 
-    def encryptMessage(self, m):
+    def encrypt_message(self, m):
         return pow(m, self.d, self.n)
 
-    def decryptMessage(self, c):
+    def decrypt_message(self, c):
         return pow(c, self.e, self.n)

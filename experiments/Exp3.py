@@ -1,7 +1,5 @@
 from experiments import Experiment
-import binascii
 import logging
-
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +21,7 @@ class Exp3(Experiment):
     def nth_root(x, n):
         # Start with some reasonable bounds around the nth root.
         upper_bound = 1
+        mid = 0
         while upper_bound ** n <= x:
             upper_bound *= 2
         lower_bound = upper_bound // 2

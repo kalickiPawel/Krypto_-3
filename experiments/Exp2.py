@@ -1,7 +1,5 @@
 from experiments import Experiment
-import binascii
 import logging
-
 
 logger = logging.getLogger(__name__)
 
@@ -18,8 +16,8 @@ class Exp2(Experiment):
         self.m1 = self.generate_int(m1)
         self.m2 = self.generate_int(m2)
 
-        self.s1 = self.encryptMessage(self.m1)
-        self.s2 = self.encryptMessage(self.m2)
+        self.s1 = self.encrypt_message(self.m1)
+        self.s2 = self.encrypt_message(self.m2)
 
         self.m_exp2 = self.realise_multiply_mod(self.m1, self.m2)
         self.s_exp2 = self.realise_multiply_mod(self.s1, self.s2)

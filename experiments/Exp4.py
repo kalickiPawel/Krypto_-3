@@ -22,15 +22,15 @@ class Exp4(Experiment):
 
         self.n = [n0, n1, n2]
         self.a = [pow(message_int, e, n)
-                  for n in self.n]   # Generating ciphers with n's list
+                  for n in self.n]  # Generating ciphers with n's list
 
     def chinese_remainder(self, n, a):
-        sum = 0
-        prod = reduce(lambda a, b: a*b, n)
+        summary = 0
+        prod = reduce(lambda a, b: a * b, n)
         for n_i, a_i in zip(n, a):
             p = prod // n_i
-            sum += a_i * self.mul_inv(p, n_i) * p
-        return sum % prod
+            summary += a_i * self.mul_inv(p, n_i) * p
+        return summary % prod
 
     def make_experiment(self):
         result = self.chinese_remainder(self.n, self.a)
@@ -56,6 +56,7 @@ class Exp4(Experiment):
     def nth_root(x, n):
         # Start with some reasonable bounds around the nth root.
         upper_bound = 1
+        mid = 0
         while upper_bound ** n <= x:
             upper_bound *= 2
         lower_bound = upper_bound // 2
