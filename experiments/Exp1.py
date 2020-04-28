@@ -19,5 +19,5 @@ class Exp1(Experiment):
     def no_message_attack(self):
         return self.s_exp1, self.m_exp1
 
-    def validation(self):
+    def validation(self, **kwargs):
         return super().validation(self.s_exp1, self.m_exp1)

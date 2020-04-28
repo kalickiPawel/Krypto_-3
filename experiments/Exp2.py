@@ -28,5 +28,5 @@ class Exp2(Experiment):
     def realise_multiply_mod(self, a, b):
         return (a * b) % self.n
 
-    def validation(self):
+    def validation(self, **kwargs):
         return super().validation(self.s_exp2, self.m_exp2)
