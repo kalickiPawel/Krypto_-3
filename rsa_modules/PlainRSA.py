@@ -7,6 +7,11 @@ logger = logging.getLogger(__name__)
 
 
 class PlainRSA():
+    """
+    Implementacja podstawowego algorytmu podpisu RSA (Plain RSA), 
+    tj. bez użycia funkcji skrótu.
+    """
+
     def __init__(self, size):
         self.size = size
         p, q = getPrime(size), getPrime(size)
