@@ -6,7 +6,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class PlainRSA:
+class Plain:
     """
     Implementation of the basic RSA signature algorithm (Plain RSA),
     i.e. without using the hash function.

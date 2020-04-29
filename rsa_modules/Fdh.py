@@ -1,11 +1,11 @@
 from Crypto.Hash import SHA256
-from rsa_modules import PlainRSA
+from rsa_modules import Plain
 import logging
 
 logger = logging.getLogger(__name__)
 
 
-class FdhRSA(PlainRSA):
+class Fdh(Plain):
     """
     Improved PlainRSA scheme to the version with attachment (RSA-FDH),
     i.e. this algorithm uses a hash function (signed (encrypted) the

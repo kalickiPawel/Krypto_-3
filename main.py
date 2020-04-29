@@ -1,4 +1,4 @@
-from rsa_modules import PlainRSA, FdhRSA
+from rsa_modules import Plain, Fdh
 from experiments import Exp1, Exp2, Exp3, Exp4
 import logging
 

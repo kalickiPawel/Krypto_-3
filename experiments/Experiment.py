@@ -1,10 +1,10 @@
-from rsa_modules import PlainRSA
+from rsa_modules import Plain
 import logging
 
 logger = logging.getLogger(__name__)
 
 
-class Experiment(PlainRSA):
+class Experiment(Plain):
     def __init__(self, size):
         super().__init__(size)
 

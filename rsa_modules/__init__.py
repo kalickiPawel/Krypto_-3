@@ -1,2 +1,2 @@
-from .PlainRSA import PlainRSA
-from .FdhRSA import FdhRSA
+from .Plain import Plain
+from .Fdh import Fdh
