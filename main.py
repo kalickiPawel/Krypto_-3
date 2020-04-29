@@ -18,31 +18,24 @@ print('zaszyfrowany int tekstu: {}'.format(encrypted_int))
 print('odszyfrowany int tekstu: {}'.format(decrypted_int))
 print('koncowa wiadomosc: {}\n'.format(decrypted_text))
 
-obj_exp_1 = Exp1(securityLength)
-(s, m) = obj_exp_1.no_message_attack()
-print('Wygenerowany podpis: {}'.format(s))
-print('Zaszyfrowany int tekstu: {}'.format(m))
-print('Czy poprawne szyfrowanie?: {}\n'.format(
-    'Tak' if obj_exp_1.validation() else 'Nie'))
 
-message1 = "Za oknem pada deszcz"
-message2 = "Moj tajny tekst."
-obj_exp_2 = Exp2(securityLength, message1, message2)
-s = obj_exp_2.make_experiment()
-print('Wygenerowany podpis: {}'.format(s))
-print('Czy poprawne szyfrowanie?: {}\n'.format(
-    'Tak' if obj_exp_2.validation() else 'Nie'))
+def generate_selection():
+    print("Możliwe metody do wyboru: ")
+    classes = [PlainRSA, FdhRSA, Exp1, Exp2, Exp3, Exp4]
+    descriptions, names = zip(*[(item.__doc__.strip(), item.__name__.strip()) for item in classes])
+    print(*("\t{0} -> {2}\n\t{1}\n".format(i, text, name) for i, (text, name) in enumerate(zip(descriptions, names))))
+    while True:
+        try:
+            choice = input("Dokonaj wyboru: ").strip()
+            if int(choice) < len(classes):
+                break
+            else:
+                print("Popraw wybor")
+        except ValueError:
+            print("Popraw wybor")
+    return choice
 
-obj_exp_3 = Exp3(securityLength)
-print('Odczytana wiadomość to: {}\n'.format(obj_exp_3.make_experiment))
 
-message = "Przykladowy tekst Håstad"
-obj_exp_4 = Exp4(securityLength, message)
-print('Odczytana wiadomosc: {}'.format(obj_exp_4.make_experiment()))
-
-message = "To jest test dla FDH RSA"
-obj_fdh_rsa = FdhRSA(securityLength)
-cipher = obj_fdh_rsa.encrypt_message(message)
-print(obj_fdh_rsa.generate_int(message))
-print(cipher)
-print(obj_fdh_rsa.decrypt_message(cipher))
+if __name__ == "__main__":
+    selector = generate_selection()
+    main = Main(selector)
