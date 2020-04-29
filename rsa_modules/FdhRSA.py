@@ -16,10 +16,16 @@ class FdhRSA(PlainRSA):
         super().__init__(size)
         self.logger = logging.getLogger(__name__)
 
-    def encrypt_message(self, message):
-        hash_for_message = SHA256.new()
-        hash_for_message.update(bytes(message, 'ascii'))
-        return super().encrypt_message(int(hash_for_message.hexdigest(), 16))
+    @staticmethod
+    def generate_hash(m):
+        h = SHA256.new()
+        h.update(bytes(m, 'ascii'))
+        logger.info('Message with hash: {}'.format(int(h.hexdigest(), 16)))
+        return int(h.hexdigest(), 16)
+
+    def encrypt_message(self, m):
+        m = self.generate_hash(m)
+        return super().encrypt_message(m)
 
     def decrypt_message(self, c):
         return super().decrypt_message(c)
