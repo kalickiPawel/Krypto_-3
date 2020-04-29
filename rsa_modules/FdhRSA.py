@@ -14,7 +14,6 @@ class FdhRSA(PlainRSA):
 
     def __init__(self, size):
         super().__init__(size)
-        self.logger = logging.getLogger(__name__)
 
     @staticmethod
     def generate_hash(m):
