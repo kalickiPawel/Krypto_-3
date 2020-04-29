@@ -2,6 +2,8 @@ from Crypto.Hash import SHA256
 from rsa_modules import PlainRSA
 import logging
 
+logger = logging.getLogger(__name__)
+
 
 class FdhRSA(PlainRSA):
     """
