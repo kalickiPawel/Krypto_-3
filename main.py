@@ -3,6 +3,7 @@ from experiments import Exp1, Exp2, Exp3, Exp4
 import logging
 
 securityLength = 128
+classes = [Plain, Exp1, Exp2, Exp3, Exp4, Fdh]
 logger = logging.getLogger(__name__)
 
 
@@ -14,17 +15,13 @@ class Main:
 
     def get_selection(self):
         logger.warning("Choice: {}".format(self.select))
-        if self.select == 0:
-            self.generate_plain_rsa()
-        if self.select == 1:
-            self.generate_fdh_rsa()
-        if self.select == 2:
-            self.generate_exp1()
+        generate = ['generate_{}'.format(name.__name__.lower()) for name in classes]
+        getattr(Main, generate[self.select])()
 
     @staticmethod
-    def generate_plain_rsa():
+    def generate_plain():
         message = 'Hello Bob!'
-        obj_rsa = PlainRSA(securityLength)
+        obj_rsa = Plain(securityLength)
         int_text = obj_rsa.generate_int(message)
         encrypted_int = obj_rsa.encrypt_message(int_text)
         decrypted_int = obj_rsa.decrypt_message(encrypted_int)
@@ -37,16 +34,6 @@ class Main:
         print('zaszyfrowany int tekstu: {}'.format(encrypted_int))
         print('odszyfrowany int tekstu: {}'.format(decrypted_int))
         print('koncowa wiadomosc: {}\n'.format(decrypted_text))
-
-    @staticmethod
-    def generate_fdh_rsa():
-        obj_fdh_rsa = FdhRSA(securityLength)
-        message = "To jest test dla FDH RSA"
-        print('\nImplementacja FDH RSA\npoczatkowa wiadomosc: {}'.format(message))
-        encrypted_int = obj_fdh_rsa.encrypt_message(message)
-        decrypted_int = obj_fdh_rsa.decrypt_message(encrypted_int)
-        print('Czy poprawne szyfrowanie?: {}'.format(
-            'Tak' if obj_fdh_rsa.validation(encrypted_int, decrypted_int) else 'Nie'))
 
     @staticmethod
     def generate_exp1():
@@ -78,10 +65,19 @@ class Main:
         obj_exp_4 = Exp4(securityLength, message)
         print('Odczytana wiadomosc: {}'.format(obj_exp_4.make_experiment()))
 
+    @staticmethod
+    def generate_fdh():
+        obj_fdh_rsa = Fdh(securityLength)
+        message = "To jest test dla FDH RSA"
+        print('\nImplementacja FDH RSA\npoczatkowa wiadomosc: {}'.format(message))
+        encrypted_int = obj_fdh_rsa.encrypt_message(message)
+        decrypted_int = obj_fdh_rsa.decrypt_message(encrypted_int)
+        print('Czy poprawne szyfrowanie?: {}'.format(
+            'Tak' if obj_fdh_rsa.validation(encrypted_int, decrypted_int) else 'Nie'))
+
 
 def generate_selection():
     print("Możliwe metody do wyboru: ")
-    classes = [PlainRSA, FdhRSA, Exp1, Exp2, Exp3, Exp4]
     descriptions, names = zip(*[(item.__doc__.strip(), item.__name__.strip()) for item in classes])
     print(*("\t{0} -> {2}\n\t{1}\n".format(i, text, name) for i, (text, name) in enumerate(zip(descriptions, names))))
     while True:
