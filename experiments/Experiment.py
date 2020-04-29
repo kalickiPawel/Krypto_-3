@@ -9,6 +9,6 @@ class Experiment(PlainRSA):
         super().__init__(size)
 
     def validation(self, c, m) -> bool:
-        logger.warn("Start validation")
+        logger.warning("Start validation")
         decrypt = self.decrypt_message(c)
         return m == decrypt
