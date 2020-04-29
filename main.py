@@ -1,14 +1,10 @@
 from rsa_modules import PlainRSA, FdhRSA
 from experiments import Exp1, Exp2, Exp3, Exp4
+import logging
 
 securityLength = 128
-obj_rsa = PlainRSA(securityLength)
+logger = logging.getLogger(__name__)
 
-message = 'Hello Bob!'
-int_text = obj_rsa.generate_int(message)
-encrypted_int = obj_rsa.encrypt_message(int_text)
-decrypted_int = obj_rsa.decrypt_message(encrypted_int)
-decrypted_text = obj_rsa.generate_txt(decrypted_int)
 
 print('Klucz publiczny: {}'.format(obj_rsa.e))
 print('Klucz prywatny: {}\n'.format(obj_rsa.d))
