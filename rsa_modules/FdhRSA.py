@@ -28,3 +28,8 @@ class FdhRSA(PlainRSA):
 
     def decrypt_message(self, c):
         return super().decrypt_message(c)
+
+    def validation(self, c, m):
+        logger.warning("Start validation")
+        decrypt = self.decrypt_message(c)
+        return m == decrypt
