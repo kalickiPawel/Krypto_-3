@@ -14,9 +14,15 @@ class Plain:
 
     def __init__(self, size):
         self.size = size
+
         p, q = getPrime(size), getPrime(size)
-        phi = (p - 1) * (q - 1)
+
+        logger.warning('Value of p: {}'.format(p))
+        logger.warning('Value of q: {}'.format(p))
+        logger.warning('Value of n: {}'.format(self.n))
+
         self.n, self.e = p * q, 65537
+        phi = (p - 1) * (q - 1)
         self.d = self.mod_inv(self.e, phi)
 
     def euclidean_algorithm(self, a, b):
