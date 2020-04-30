@@ -1,20 +1,24 @@
-# Krypto_3
+# Cryptology laboratory exercises no. 03
 
-Zadanie obejmowało implementacje, przeprowadzanie eksperymentów związanych z najbardziej znanymi atakami oraz przygotowaniu analizy dotyczącej bezpiecznej implementacji RSA.
+Tasks included:
+- implementation,
+- carry out experiments associated with the most famous attacks,
+- preparing analysis on the secure implementation of RSA.
 
-Na początku należy skonfigurować środowisko wirtualne wybraną przez siebie metodą.
-Przykładowa metoda została przedstawiona poniżej:
+
+First, configure the virtual environment with your chosen method.
+An example is presented below:
 ```
 >>> python3 -m venv venv
 >>> source venv/bin/activate
 ```
-Następnie warto doinstalować aktualizację instalatora pakietów oraz wymagane pakiety:
+Then is worth install the package manager update and the required packages:
 ```
 >>> pip install --upgrade pip
 >>> pip install -r requirements.txt
 ```
-W celu uruchomienia programu należy użyć polecenia umieszczonego poniżej:
+To run the program, use the command below:
 ```
 >>> python main.py
 ```
-To polecenie uruchamia program CLI pozwalający na przeprowadzenie eksperymentów dotyczących tych zajęć.
+This command runs the CLI program that allows you to perform experiments from this laboratory exercises.
