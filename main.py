@@ -73,12 +73,16 @@ class Main:
     @staticmethod
     def generate_fdh():
         obj_fdh_rsa = Fdh(securityLength)
-        message = "To jest test dla FDH RSA"
+        message = "Hello Bob!"
         print('\nImplementacja FDH RSA\npoczatkowa wiadomosc: {}'.format(message))
+        start = time.time()
         encrypted_int = obj_fdh_rsa.encrypt_message(message)
         decrypted_int = obj_fdh_rsa.decrypt_message(encrypted_int)
+        end = time.time()
         print('Czy poprawne szyfrowanie?: {}'.format(
             'Tak' if obj_fdh_rsa.validation(encrypted_int, decrypted_int) else 'Nie'))
+
+        print('Czas wykonania operacji podpisywania i weryfikacji podpisu: {}'.format(end - start))
 
 
 def generate_selection():
