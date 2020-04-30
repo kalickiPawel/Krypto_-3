@@ -1,6 +1,7 @@
 from rsa_modules import Plain, Fdh
 from experiments import Exp1, Exp2, Exp3, Exp4
 import logging
+import time
 
 securityLength = 128
 classes = [Plain, Exp1, Exp2, Exp3, Exp4, Fdh]
@@ -23,8 +24,10 @@ class Main:
         message = 'Hello Bob!'
         obj_rsa = Plain(securityLength)
         int_text = obj_rsa.generate_int(message)
+        start = time.time()
         encrypted_int = obj_rsa.encrypt_message(int_text)
         decrypted_int = obj_rsa.decrypt_message(encrypted_int)
+        end = time.time()
         decrypted_text = obj_rsa.generate_txt(decrypted_int)
 
         print('Klucz publiczny: {}'.format(obj_rsa.e))
@@ -34,6 +37,8 @@ class Main:
         print('zaszyfrowany int tekstu: {}'.format(encrypted_int))
         print('odszyfrowany int tekstu: {}'.format(decrypted_int))
         print('koncowa wiadomosc: {}\n'.format(decrypted_text))
+
+        print('Czas wykonania operacji podpisywania i weryfikacji podpisu: {}'.format(end-start))
 
     @staticmethod
     def generate_exp1():
