@@ -17,13 +17,13 @@ class Plain:
 
         p, q = getPrime(size), getPrime(size)
 
-        logger.warning('Value of p: {}'.format(p))
-        logger.warning('Value of q: {}'.format(p))
-        logger.warning('Value of n: {}'.format(self.n))
-
         self.n, self.e = p * q, 65537
         phi = (p - 1) * (q - 1)
         self.d = self.mod_inv(self.e, phi)
+
+        logger.warning('Value of p: {}'.format(p))
+        logger.warning('Value of q: {}'.format(p))
+        logger.warning('Value of n: {}'.format(self.n))
 
     def euclidean_algorithm(self, a, b):
         if a == 0:
