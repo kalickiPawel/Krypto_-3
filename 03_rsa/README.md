@@ -1,5 +1,10 @@
 # Cryptology laboratory exercises no. 03
 
+The purpose of the laboratory exercises was study of issues related to security of implementation 
+RSA signature algorithm and get acquainted with security models of digital signatures schemas.
+
+> Exercise Language -> Python 3.7.7
+
 Tasks included:
 - implementation,
 - carry out experiments associated with the most famous attacks,
