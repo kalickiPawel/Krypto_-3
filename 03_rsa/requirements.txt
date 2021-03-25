@@ -2,4 +2,4 @@ autopep8==1.5.2
 numpy==1.18.3
 pycodestyle==2.5.0
 pycryptodome==3.7.0
-PyYAML==5.3.1
+PyYAML==5.4
